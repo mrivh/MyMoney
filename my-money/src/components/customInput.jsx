@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 
-const CustomImput = ({value, setValue, placeholder, secureTextEntry }) => {
+const CustomInput = ({value, setValue, placeholder, secureTextEntry }) => {
     return (
         <View style={styles.container}>
             <TextInput 
+            style={styles.input}
             value={value}
             onChangeText={setValue}
             placeholder={placeholder}
-            style={styles.input}
+            
             secureTextEntry={secureTextEntry} 
             />
         </View>
@@ -18,16 +19,19 @@ const CustomImput = ({value, setValue, placeholder, secureTextEntry }) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ffff',
-        width: '100%',
+        width: '85%',
 
         borderColor: '#e8e8e8',
         borderWidth: 1,
         borderRadius: 5, 
 
-        paddingHorizontal: 10,
+        paddingHorizontal: 6,
         marginVertical: 8,
     },
-    input: {},
+    input: {
+        height: 20,
+        width: '100%',
+    },
 });
 
-export default CustomImput;
+export default CustomInput;
