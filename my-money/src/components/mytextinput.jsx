@@ -47,9 +47,9 @@ const styles = StyleSheet.create({
         height: 30,
         borderColor: '#39a851',
         borderWidth: 1,
-        borderRadius: 25, 
+        borderRadius: 10, 
         backgroundColor: '#FFFFFF',
-        marginBottom: 20,
+        marginBottom: 10,
   //      justifyContent: 'center',
         padding: 10,
  //       marginHorizontal: 10,
@@ -57,13 +57,14 @@ const styles = StyleSheet.create({
 
     textContainer: {
         flex: 1,
+        backgroundColor: '#000000'
 //        backgroundColor: 'yellow',
     },
 
     textLabel: {
         fontSize: 16,
-        fontStyle: 'bold',
-        fontFamily: 'Arial',
+        fontWeight: 'bold',
+        fontFamily: 'Roboto',
         color: '#566573',
     },
 

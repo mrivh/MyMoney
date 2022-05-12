@@ -7,6 +7,7 @@ import { passwordValidation } from "../../../utils/validations";
 import { ActivityIndicator, Linking } from "react-native-web";
 
 
+
 const Logo = require ('../../../assets/images/logomymoney.png');
 
 export default function Register() {
@@ -49,7 +50,7 @@ const enviarUsuario = async () => {
 };
 return (
     
-    <SafeAreaView>
+    
       <View style={styles.container}>
         <View style={styles.logoContainer}>
         <Image source={ Logo } style={styles.logo} resizeMode='contain'/>
@@ -90,7 +91,7 @@ return (
         />
          
 
-        <View style={styles.myBottonContainer}>
+        <View style={styles.myButtonContainer}>
           {Loading ? (
             <ActivityIndicator/>
             ) : (
@@ -104,7 +105,7 @@ return (
             
         </View>
       </View>
-    </SafeAreaView>
+
     );
   };
   
@@ -113,11 +114,9 @@ return (
         flex: 1,
         flexDirection: "column",
         backgroundColor: '#FFFFFF',
-        justifyContent: "space-evenly",
-        padding: 40,
-        paddingVertical: 50,
-    //    marginVertical: 5,
-     //   marginTop: 80,
+        justifyContent: "center",
+        padding: 30,
+        alignItems: "center",
     },
     logoContainer: {
       flex: 1,
@@ -142,6 +141,15 @@ return (
     errorText: {
       color: '#FA0303',
       fontSize: 14,
+    },
+
+    myButtonContainer: {
+      flex: 1,
+      width: '100%',
+      height: '10%',
+      backgroundColor: '#696969',
+      justifyContent: "center",
+      alignItems: "center",
     }
 
   });
