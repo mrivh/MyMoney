@@ -17,13 +17,14 @@ return (
         type="Text"
         placeholder={place}
         style={styles.textInput}
-        securityTextEntry={security}
+        secureTextEntry={security}
         value={value}
         onChangeText={changeText}
         placeholderTextColor={'#808B96'}
         />
     </View>
     {icon && <Icon 
+        style={styles.iconEye}
         size={26} 
         color={'#2f8f94'}
         name={icon}
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
 
     textContainer: {
         flex: 1,
-        backgroundColor: 'yellow',
+//        backgroundColor: 'yellow',
     },
 
     textLabel: {
@@ -64,7 +65,13 @@ const styles = StyleSheet.create({
         fontStyle: 'bold',
         fontFamily: 'Arial',
         color: '#566573',
-    }
+    },
+
+    iconEye: {
+        position: 'relative',
+        marginVertical: 25,
+        fontSize: 20,
+    },
 })
 
 export default MyTextInput;
