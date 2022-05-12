@@ -28,7 +28,7 @@ return (
         size={26} 
         color={'#2f8f94'}
         name={icon}
-        onPress={onIconclick}
+        onPress={onIconclick}    
     />
     }
 </View>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 
     textContainer: {
         flex: 1,
-  //      backgroundColor: 'yellow',
+//        backgroundColor: 'yellow',
     },
 
     textLabel: {
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     iconEye: {
         position: 'relative',
         marginVertical: 25,
+        fontSize: 20,
     },
 })
 

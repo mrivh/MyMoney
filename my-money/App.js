@@ -1,8 +1,8 @@
 import React from "react";
 import { SafeAreaView, StyleSheet } from 'react-native';
 import LogIn from "./src/screens/login/index.jsx";
-import MyTextInput from "./src/components/mytextinput.jsx";
-import Alerts from "./src/components/alerts";
+import ForgotPassword from "./src/screens/forgotpassword/index.jsx";
+import Home from "./src/screens/home/index.jsx";
 
 
 const App = () => {

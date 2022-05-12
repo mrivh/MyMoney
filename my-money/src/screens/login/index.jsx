@@ -1,16 +1,15 @@
 import React from "react";
-import { View, Image, Text, StyleSheet, TouchableOpacity, SafeAreaView } from "react-native";
+import { View, Image, Text, StyleSheet, SafeAreaView } from "react-native";
 import MyTextInput from "../../components/mytextinput";
+import MyButton from "../../components/mybutton";
 import axios from "axios";
 import { passwordValidation } from "../../../utils/validations";
-import CustomInput from "../../components/customInput";
+import { ActivityIndicator, Linking } from "react-native-web";
 
 
-const Logo = require('../../../assets/images/logomymoney.png');
+const Logo = require ('../../../assets/images/logomymoney.png');
 
 export default function LogIn() {
-//  const [user, setUser] = React.useState(initialState);
-//  const initialState = { email: "", password: "",};
   const [Email, setEmail] = React.useState("");
   const [Password, setPassword] = React.useState("");
   const [Loading, setLoading] = React.useState(false);
@@ -31,7 +30,7 @@ const sendUser = async () => {
   try {
     setLoading(true);
     const response = await axios.post(
-      "https://floating-reef-988769.herokuapp.com/login",
+      "https://floating-reef-98769.herokuapp.com/logIn/",
       {email: Correo, password: Contraseña}
     );
     console.log(response);
@@ -53,17 +52,15 @@ const sendUser = async () => {
     <SafeAreaView>
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-        <Image source={Logo} style={styles.logo} resizeMode='contain'/>
+        <Image source={ Logo } style={styles.logo} resizeMode='contain'/>
         </View>
         <Text style={styles.title}>Iniciar sesión</Text>
-       
   
         <MyTextInput
           label="Correo electrónico"
           place="Correo electrónico"
           value={Email}
           setValue={setEmail}  
- //         onChangeText={(text) => ChangeUserInputs("email", text)}
         />
 
         <MyTextInput
@@ -75,25 +72,36 @@ const sendUser = async () => {
           setValue={setPassword}
           icon={ShowPassword ? "eye-slash" : "eye"}
           onIconclick={() => setShowPassword(!ShowPassword)}
-  //        onChangeText={(text) => ChangeUserInputs("password", text)}
         />
          
          <Text style={styles.errorText}>
            {Error}
          </Text>
 
-        <TouchableOpacity>
-          <Text style={styles.forgotBtn}> ¿Olvidaste tu contraseña? </Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text style={{color:'#FFFFFF', fontSize: 16}}> Ingresar </Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.registerBtn}>
-          <Text style={{color:'#003F5C', fontSize: 16}}> Registrarse </Text>
-        </TouchableOpacity>
 
+        <View style={styles.myBottonContainer}>
+          {Loading ? (
+            <ActivityIndicator/>
+            ) : (
+            <MyButton 
+            text="Ingresar" 
+            onPress={sendForm}
+            type="PRIMARY"
+            />
+            )
+          }
+            <MyButton 
+            text="¿Olvidaste tu contraseña?" 
+            onPress={() => Linking.openURL(ForgotPassword)}
+            type="TERTIARY"
+            />
+            
+            <MyButton 
+            text="Registrarse" 
+            onPress={() => Linking.openURL(Register)}
+            type="SECONDARY"
+            />
+        </View>
       </View>
     </SafeAreaView>
     );
@@ -106,7 +114,7 @@ const sendUser = async () => {
         backgroundColor: '#FFFFFF',
         justifyContent: "space-evenly",
         padding: 40,
-        paddingVertical: 60,
+        paddingVertical: 50,
     //    marginVertical: 5,
      //   marginTop: 80,
     },
@@ -114,6 +122,7 @@ const sendUser = async () => {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+      paddingVertical: 20,
     },
 
     logo: {
@@ -127,32 +136,6 @@ const sendUser = async () => {
         color: '#2E86C1',
         textAlign: 'center',
         marginBottom: 40,
-    },
-
-    forgotBtn:{
-      color: '#003F5C',
-      fontSize: 14,
-      justifyContent: 'center',
-      padding: 20,
-      marginHorizontal: 30,
-    },
-
-    loginBtn:{
-      height: 50,
-      borderRadius: 25,
-      backgroundColor: '#39a851',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: '40',
-    },
-
-    registerBtn: {
-      height: 50,
-      borderRadius: 25,
-      backgroundColor: '#FFFFFF',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: '40',
     },
 
     errorText: {
