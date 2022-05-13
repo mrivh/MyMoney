@@ -7,9 +7,10 @@ import { passwordValidation } from "../../../utils/validations";
 import { ActivityIndicator, Linking } from "react-native-web";
 
 
+
 const Logo = require ('../../../assets/images/logomymoney.png');
 
-export default function LogIn() {
+export default function LogIn({navigation}) {
   const [Email, setEmail] = React.useState("");
   const [Password, setPassword] = React.useState("");
   const [Loading, setLoading] = React.useState(false);
@@ -20,7 +21,7 @@ const sendForm = () => {
   if (Email === ""){
     return alert("Es necesario ingresar un correo electrónico");
   }
-  if (!passwordValidation.text(Password)){
+  if (!passwordValidation.test(Password)){
     return alert("Es necesario ingresar una contraseña válida");
   }
   sendUser();
@@ -49,7 +50,7 @@ const sendUser = async () => {
 };
 
     return (
-    <SafeAreaView>
+    
       <View style={styles.container}>
         <View style={styles.logoContainer}>
         <Image source={ Logo } style={styles.logo} resizeMode='contain'/>
@@ -79,7 +80,13 @@ const sendUser = async () => {
          </Text>
 
 
-        <View style={styles.myBottonContainer}>
+        <View style={styles.myButtonContainer}>
+            <MyButton 
+            text="¿Olvidaste tu contraseña?" 
+            
+            type="TERTIARY"
+            />
+          
           {Loading ? (
             <ActivityIndicator/>
             ) : (
@@ -90,20 +97,15 @@ const sendUser = async () => {
             />
             )
           }
-            <MyButton 
-            text="¿Olvidaste tu contraseña?" 
-            onPress={() => Linking.openURL(ForgotPassword)}
-            type="TERTIARY"
-            />
             
             <MyButton 
             text="Registrarse" 
-            onPress={() => Linking.openURL(Register)}
+            onPress={() => navigation.navigate('Register')}
             type="SECONDARY"
             />
         </View>
       </View>
-    </SafeAreaView>
+    
     );
   };
   
@@ -112,11 +114,11 @@ const sendUser = async () => {
         flex: 1,
         flexDirection: "column",
         backgroundColor: '#FFFFFF',
-        justifyContent: "space-evenly",
-        padding: 40,
-        paddingVertical: 50,
-    //    marginVertical: 5,
-     //   marginTop: 80,
+        justifyContent: "center",
+        padding: 30,
+        alignItems: "center",
+        
+
     },
     logoContainer: {
       flex: 1,
@@ -141,6 +143,16 @@ const sendUser = async () => {
     errorText: {
       color: '#FA0303',
       fontSize: 14,
-    }
+    },
 
+    myButtonContainer: {
+      flex: 1,
+      width: '100%',
+      flexDirection: "column",
+      backgroundColor: '#FFFFFF',
+      justifyContent: "center",
+      alignItems: "center",
+    }
+    
+    
   });

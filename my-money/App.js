@@ -1,25 +1,26 @@
 import React from "react";
 import { SafeAreaView, StyleSheet } from 'react-native';
+import Register from "./src/screens/register/index";
 import LogIn from "./src/screens/login/index.jsx";
 import ForgotPassword from "./src/screens/forgotpassword/index.jsx";
 import Home from "./src/screens/home/index.jsx";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const App = () => {
+const Stack = createNativeStackNavigator();
+
+export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <LogIn/>
-    </SafeAreaView>
+    
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Login" component={LogIn} />
+          <Stack.Screen name="Register" component={Register} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    
   );
+  
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default App;

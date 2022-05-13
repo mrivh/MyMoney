@@ -7,22 +7,25 @@ import { passwordValidation } from "../../../utils/validations";
 import { ActivityIndicator, Linking } from "react-native-web";
 
 
+
 const Logo = require ('../../../assets/images/logomymoney.png');
 
-export default function LogIn() {
+export default function Register() {
   const [User, setUser] = React.useState("");  
   const [Correo, setCorreo] = React.useState("");
   const [Contraseña, setContraseña] = React.useState("");
   const [ConfContra, setConfiContra] = React.useState("");
   const [Loading, setLoading] = React.useState(false);
   const [ShowPassword, setShowPassword] = React.useState(false);
-  const [Error, setError] = React.useState("");
 
 const enviarFormulario = () => {
+  if (User === ""){
+    return alert("Es necesario ingresar un nombre de usuario");
+  }  
   if (Correo === ""){
     return alert("Es necesario ingresar un correo electrónico");
   }
-  if (!passwordValidation.text(Password)){
+  if (!passwordValidation.test(Contraseña)){
     return alert("Por favor, ingrese una contraseña válida");
   }
   if (ConfContra != Contraseña) {
@@ -43,11 +46,11 @@ const enviarUsuario = async () => {
   }catch (error){
     setLoading(false);
     console.error(error);
-    }
+  }
 };
-
-    return (
-    <SafeAreaView>
+return (
+    
+    
       <View style={styles.container}>
         <View style={styles.logoContainer}>
         <Image source={ Logo } style={styles.logo} resizeMode='contain'/>
@@ -71,47 +74,38 @@ const enviarUsuario = async () => {
         <MyTextInput
           label="Contraseña"
           place="6-20 caracteres, 1 Mayúscula, 1 Caracter, 1 Número"
-  //      "Debe contener: 6 a 20 carácteres, 1 mayúscula, 1 caracter y 1 número. "
           security={!ShowPassword}
-          value={Password}
-          setValue={setPassword}
+          value={Contraseña}
+          setValue={setContraseña}
           icon={ShowPassword ? "eye-slash" : "eye"}
           onIconclick={() => setShowPassword(!ShowPassword)}
         />
         <MyTextInput
           label="Confirmar Contraseña"
           place="Digite de nuevo su contraseña"
-          security
+          security={!ShowPassword}
           value={ConfContra}
           setValue={setConfiContra}
+          icon={ShowPassword ? "eye-slash" : "eye"}
+          onIconclick={() => setShowPassword(!ShowPassword)}
         />
          
 
-        <View style={styles.myBottonContainer}>
+        <View style={styles.myButtonContainer}>
           {Loading ? (
             <ActivityIndicator/>
             ) : (
             <MyButton 
-            text="Ingresar" 
-            onPress={sendForm}
+            text="Registrarse" 
+            onPress={enviarFormulario}
             type="PRIMARY"
             />
             )
           }
-            <MyButton 
-            text="¿Olvidaste tu contraseña?" 
-            onPress={() => Linking.openURL(ForgotPassword)}
-            type="TERTIARY"
-            />
             
-            <MyButton 
-            text="Registrarse" 
-            onPress={() => Linking.openURL(Register)}
-            type="SECONDARY"
-            />
         </View>
       </View>
-    </SafeAreaView>
+
     );
   };
   
@@ -120,11 +114,9 @@ const enviarUsuario = async () => {
         flex: 1,
         flexDirection: "column",
         backgroundColor: '#FFFFFF',
-        justifyContent: "space-evenly",
-        padding: 40,
-        paddingVertical: 50,
-    //    marginVertical: 5,
-     //   marginTop: 80,
+        justifyContent: "center",
+        padding: 30,
+        alignItems: "center",
     },
     logoContainer: {
       flex: 1,
@@ -149,6 +141,15 @@ const enviarUsuario = async () => {
     errorText: {
       color: '#FA0303',
       fontSize: 14,
+    },
+
+    myButtonContainer: {
+      flex: 1,
+      width: '100%',
+      height: '10%',
+      backgroundColor: '#696969',
+      justifyContent: "center",
+      alignItems: "center",
     }
 
   });
