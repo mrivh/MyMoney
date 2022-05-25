@@ -54,9 +54,9 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         backgroundColor: '#FFFFFF',
         justifyContent: "space-between",
-        padding: 40,
-        paddingVertical: 50,
-   //     alignItems: 'center',
+        padding: 30,
+        paddingVertical: 20,
+        alignItems: 'center',
    //     padding: 12,
     },
 
@@ -65,6 +65,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#2E86C1',
         margin: 10,
+        textAlign: 'center',
+        marginBottom: 40,
+        paddingVertical: 50,
     },
 });
 

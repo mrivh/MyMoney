@@ -18,13 +18,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
 
-        width: '20%',
+        width: '90%',
         height: 40,
         borderRadius: 20,
 
         padding: 5,
-        marginVertical: 3,
-      //  marginTop: '20',
+        marginVertical: 2,
+    //   marginTop: '20',
     },
 
 container_PRIMARY: {
@@ -37,7 +37,6 @@ container_SECONDARY: {
 },  
 
 container_TERTIARY: {},
-
     text: {
         fontWeight: 'normal',
         color: '#ffffff',

@@ -39,7 +39,7 @@ return (
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
     },
 
     textInput: {
