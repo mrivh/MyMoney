@@ -7,6 +7,7 @@ const MyTextInput = ({label="", place="", security=false, value="", setValue=nul
 const changeText = text => setValue(text);
 
 return (
+
 <View style={styles.row}>    
     <View style={styles.textContainer}>
         <Text style={styles.textLabel}>
@@ -38,7 +39,7 @@ return (
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
     },
 
     textInput: {
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10, 
         backgroundColor: '#FFFFFF',
-        marginBottom: 10,
+        marginBottom: 20,
   //      justifyContent: 'center',
         padding: 10,
  //       marginHorizontal: 10,
@@ -57,14 +58,11 @@ const styles = StyleSheet.create({
 
     textContainer: {
         flex: 1,
-        backgroundColor: '#000000'
-//        backgroundColor: 'yellow',
     },
 
     textLabel: {
         fontSize: 16,
         fontWeight: 'bold',
-        fontFamily: 'Roboto',
         color: '#566573',
     },
 

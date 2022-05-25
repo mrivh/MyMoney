@@ -19,12 +19,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
         width: '90%',
-        height: 50,
+        height: 40,
         borderRadius: 20,
 
         padding: 5,
-        marginVertical: 10,
-     //   marginTop: '20',
+        marginVertical: 2,
+    //   marginTop: '20',
     },
 
 container_PRIMARY: {
@@ -37,7 +37,6 @@ container_SECONDARY: {
 },  
 
 container_TERTIARY: {},
-
     text: {
         fontWeight: 'normal',
         color: '#ffffff',
@@ -50,7 +49,7 @@ container_TERTIARY: {},
 
     text_TERTIARY: {
         color: '#6D8299',
-        fontFamily: 'Roboto'
+        fontFamily: 'Arial'
     },
 });
 

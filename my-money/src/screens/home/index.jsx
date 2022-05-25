@@ -1,14 +1,20 @@
 import React from "react";
-import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { View, Image, Text, SafeAreaView, StyleSheet } from 'react-native';
 
+
+const Logo = require ('../../../assets/images/logomymoney.png');
 
 export default function Home() {
   return (
-    <SafeAreaView style={styles.container}>
-        <View>
-        <Text style={styles.title}>Home</Text>
+    <View style={styles.container}>
+        <View style={styles.logoContainer}>
+        <Image source={ Logo } style={styles.logo} resizeMode='contain'/>
+        
+
+        <Text style={styles.title}>Bienvenido</Text>
+
         </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -22,11 +28,24 @@ const styles = StyleSheet.create({
     paddingVertical: 50,
   },
 
+  logoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
+
+  logo: {
+    width: 150,
+    height: 150,
+  },
+
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#2E86C1',
     textAlign: 'center',
     marginBottom: 40,
+    paddingVertical: 50,
   },
 });
