@@ -1,16 +1,17 @@
 import React from "react";
-import { View, Image, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Image, Text, StyleSheet } from "react-native";
 import MyTextInput from "../../components/mytextinput";
 import MyButton from "../../components/mybutton";
 import axios from "axios";
 import { passwordValidation } from "../../../utils/validations";
-import { ActivityIndicator, Linking } from "react-native-web";
+import { ActivityIndicator } from "react-native-web";
 
 
 
 const Logo = require ('../../../assets/images/logomymoney.png');
 
 export default function LogIn({navigation}) {
+//    console.log(props);
   const [Email, setEmail] = React.useState("");
   const [Password, setPassword] = React.useState("");
   const [Loading, setLoading] = React.useState(false);
@@ -32,25 +33,25 @@ const sendUser = async () => {
     setLoading(true);
     const response = await axios.post(
       "https://floating-reef-98769.herokuapp.com/logIn/",
-      {email: Correo, password: Contraseña}
+      { email: Email, password: Password }
     );
-    console.log(response);
-    setLoading(false);
+//    console.log(response);
+//    setLoading(false);
 //CAMBIAR POR
- //     props.navigation.navigate("Avance");
- //     setLoading(false);
+      navigation.navigate("Home");
+      setLoading(false);
   }
   catch (error){
-    const data=error.responde.data
+    const data=error.response.data
     setLoading(false);
-    setError(data.msg ? data.msg : data.error)
+    setError(data.detail ? data.detail : data.error);
     console.error(error);
 //    console.log("No es posible Iniciar Sesión, favor de verificar tus datos");
   }
 };
 
     return (
-    
+      
       <View style={styles.container}>
         <View style={styles.logoContainer}>
         <Image source={ Logo } style={styles.logo} resizeMode='contain'/>
@@ -83,7 +84,7 @@ const sendUser = async () => {
         <View style={styles.myButtonContainer}>
             <MyButton 
             text="¿Olvidaste tu contraseña?" 
-            
+            onPress={() => navigation.navigate('ForgotPassword')}
             type="TERTIARY"
             />
           
@@ -105,7 +106,7 @@ const sendUser = async () => {
             />
         </View>
       </View>
-    
+      
     );
   };
   
