@@ -18,13 +18,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
 
-        width: '90%',
+        width: '20%',
         height: 40,
         borderRadius: 20,
 
         padding: 5,
-        marginVertical: 10,
-     //   marginTop: '20',
+        marginVertical: 3,
+      //  marginTop: '20',
     },
 
 container_PRIMARY: {
