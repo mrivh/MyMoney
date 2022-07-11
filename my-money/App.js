@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from 'react-native';
+import LoginScreen from './src/screens/loginScreen';
 import Register from "./src/screens/register/index";
 import LogIn from "./src/screens/login/index.jsx";
 import ForgotPassword from "./src/screens/forgotpassword/index.jsx";
@@ -7,8 +7,13 @@ import Home from "./src/screens/home/index.jsx";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+const App = () => {
+  return <LoginScreen />;
+};
 
-const Stack = createNativeStackNavigator();
+export default App;
+
+/*const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
@@ -21,5 +26,5 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
   );
-};
+};*/
 
