@@ -9,7 +9,7 @@ import ButtonForInit from '../../components/ButtonForInit';
 import BottomText from '../../components/BottomText';
 import styles from './styles';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.logoscontainer}>
@@ -31,10 +31,12 @@ export default function LoginScreen() {
         />
         <BottomText text={'¿Contraseña Olvidada?'} />
         <ButtonForInit text="INGRESAR"/>
-        <BottomText text={'¿Aún no tienes una cuenta?'} />
+        <BottomText 
+          navigation={navigation}
+          text={'¿Aún no tienes una cuenta?'} 
+          nameScreen={'registerScreen'}/>
       </View>
     </View>
   );
 }
 
-//DAC7FF

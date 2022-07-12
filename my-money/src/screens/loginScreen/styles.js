@@ -2,10 +2,10 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   logocontainer: {marginTop: 100},
-  container: {width: '100%', height: '100%',},
+  container: {width: '100%', height: '100%', backgroundColor: '#FFFFFF'},
   formcontainer: {
     width: '100%',
-    backgroundColor: '#00296A',
+    backgroundColor: '#FFFFFF',
     height: Dimensions.get('screen').height,
     marginTop: 100,
     borderTopRightRadius: 30,

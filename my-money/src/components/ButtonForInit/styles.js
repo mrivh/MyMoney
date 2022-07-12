@@ -11,30 +11,9 @@ const styles = StyleSheet.create({
     marginLeft: 42,
     marginTop: 15,
   },
-  button2: {
-    width: Dimensions.get('screen').width - 158,
-    height: 50,
-    backgroundColor: '#fff',
-    borderWidth: 3,
-    borderColor: '#DB6C9E',
-    borderRadius: 8,
-    marginLeft: 79,
-    marginTop: 20,
-    justifyContent: 'center',
-  },
   text1: {
-    color: '#fff',
+    color: '#00296A',
     fontSize: 16,
-  },
-  text2: {
-    color: '#DB6C9E',
-    fontSize: 20,
-    fontWeight: '600',
-    marginLeft: 35,
-  },
-  google: {
-    position: 'absolute',
-    right: 35,
   },
 });
 
