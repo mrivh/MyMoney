@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     width: 225,
     marginBottom: -2,
+    color: '#07D9D9',
   },
   icon: {marginLeft: 76, marginRight: 10},
   visible: {position: 'absolute', right: 23, top: 9},

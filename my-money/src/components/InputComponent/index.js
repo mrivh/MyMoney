@@ -7,6 +7,8 @@ import TriangleSVG from '../../../assets/icons/triangulo.svg';
 import WarningSVG from '../../../assets/icons/warning.svg';
 import Visible2SVG from '../../../assets/icons/visibility2.svg';
 
+
+
 const getText = title => {
   switch (title) {
     case 'Nombre de usuario':
@@ -39,25 +41,30 @@ export default function InputComponent({
   Icon,
   visibleIcon = false,
   visibleAlert = false,
+  value="",
+  setValue=null
 }) {
-  const [passVisible, setPassVisible] = useState(false);
+  const [passVisible, setPassVisible] = useState(true);
   const changePassVisible = () => setPassVisible(!passVisible);
+  const changeText = text => setValue(text);
   return (
     <View style={styles.containerInput}>
       {visibleAlert ? <Alert title={title} /> : null}
       <View style={styles.iconInput}>
         <Icons IconProp={Icon} style={styles.icon} />
         <TextInput
-          placeholderTextColor='#07D9D9'
+          placeholderTextColor='#C4C4C4'
           placeholder={title}
           style={styles.input}
-          secureTextEntry={!passVisible}
+          secureTextEntry={title === ('Contraseña' || 'Repetir contraseña') ?passVisible : false}
+          value={value}
+          onChangeText={changeText}
         />
       </View>
       {visibleIcon ? (
         <TouchableOpacity style={styles.visible} onPress={changePassVisible}>
           <Icons
-            IconProp={!passVisible ? VisibleSVG : Visible2SVG}
+            IconProp={!passVisible ? Visible2SVG : VisibleSVG}
             style={null}
           />
         </TouchableOpacity>
@@ -65,3 +72,9 @@ export default function InputComponent({
     </View>
   );
 }
+
+/*if (!userValidation.test(User)){
+  return 'Nombre de usuario inválido';
+}else if(User === ""){
+  return 'Ingrese nombre de usuario';
+}*/

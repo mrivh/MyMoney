@@ -1,19 +1,21 @@
 import React from "react";
 import { View, Image, Text, SafeAreaView, StyleSheet } from 'react-native';
+import ButtonForInit from '../../components/ButtonForInit';
 
 
-const Logo = require ('../../../assets/images/logomymoney.png');
-
-export default function Home() {
+export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
-        <View style={styles.logoContainer}>
-        <Image source={ Logo } style={styles.logo} resizeMode='contain'/>
-        
-
         <Text style={styles.title}>Bienvenido</Text>
-
-        </View>
+        <ButtonForInit 
+          text="REGISTRO DE CUENTAS"
+          onPress={() => navigation.navigate('registerAccountsScreen')}
+          />
+        <ButtonForInit 
+          text="LISTADO DE CUENTAS"
+          
+          />
+        
     </View>
   );
 };

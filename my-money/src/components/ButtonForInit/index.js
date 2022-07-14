@@ -1,13 +1,14 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
-import Icons from '../icons';
 
-export default function ButtonsForInit({text}) {
+export default function ButtonsForInit({text, onPress=null}) {
   return (
     <View>
-      <TouchableOpacity style={styles.button1}>
-        <Text style={styles.text1}>{text}</Text>
+      <TouchableOpacity
+        onPress={onPress} 
+        style={styles.button}>
+        <Text style={styles.text}>{text}</Text>
       </TouchableOpacity>
     </View>
   );

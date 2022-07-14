@@ -1,7 +1,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
-  button1: {
+  button: {
     width: Dimensions.get('screen').width - 84,
     height: 45,
     backgroundColor: '#07D9D9',
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     marginLeft: 42,
     marginTop: 15,
   },
-  text1: {
+  text: {
     color: '#00296A',
     fontSize: 16,
   },
