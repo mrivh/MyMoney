@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text} from "react-native";
 import LogoSVG from "../../../assets/icons/logo.svg";
 import Icons from "../../components/icons";
 import InputComponent from "../../components/InputComponent";
@@ -7,6 +7,7 @@ import EmailSVG from "../../../assets/icons/email.svg";
 import PasswordSVG from "../../../assets/icons/password.svg";
 import ButtonForInit from "../../components/ButtonForInit";
 import BottomText from "../../components/BottomText";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from "./styles";
 import axios from "axios";
@@ -19,15 +20,17 @@ const initialState = {
 export default function LoginScreen({ navigation }) {
   const [user, setUser] = useState(initialState);
   const [errors, setErrors] = useState({ email: false, password: false });
+
   const sendForm = () => {
     let next = true;
     let newErrors = errors;
-    
+    navigation.navigate("homeScreen");
     for(let property in user){
       if(user[property]===""){
         newErrors[property] = true
         next = false
       }
+    
     }
     setErrors(newErrors)
     if(next){
@@ -37,16 +40,27 @@ export default function LoginScreen({ navigation }) {
   };
 
   const sendUser = async () => {
+    
     try {
       const response = await axios.post(
         "http://secret-garden-33326.herokuapp.com/logIn/",
         user
       );
+      
+      const tokens = response.data.tokens
+      const keyV = [...response]
+      JSON.parse(tokens)
+      console.log(keyV)
 
+     
+      //AsyncStorage.setItem("userInfo", keyValue.access)
+    
       navigation.navigate("homeScreen");
       setLoading(false);
     } catch (error) {
+      
       console.error(error?.response?.data);
+      
     }
   };
   const changeUserFields = (name, text) => {

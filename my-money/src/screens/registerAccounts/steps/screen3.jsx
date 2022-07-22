@@ -13,7 +13,7 @@ const Screen3 = () => {
         onChangeText={(text) =>
           setFormulario({
             ...formulario,
-            accountType: text,
+            account_type: text,
           })
         }
       />

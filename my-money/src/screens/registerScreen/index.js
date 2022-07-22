@@ -12,45 +12,55 @@ import { passwordValidation, userValidation } from "../../../utils/validations";
 import styles from './styles';
 import axios from "axios";
 
+const initialState = {
+  username: "",
+  email: "",
+  password: "",
+};
 
 export default function RegisterScreen({navigation}) {
-  const [User, setUser] = useState("");  
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [user, setUser] = useState(initialState);  
   const [ConfPassword, setConfPassword] = useState("");
   const [Loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({ username: false, email: false, password: false });
 
 const sendForm = () => {
-  if (User === ""){
-    return alert("Ingresar un nombre de usuario");
-  }  
-  if (Email === ""){
-    return alert("Ingresa un correo electrónico");
+  let next = true;
+  let newErrors = errors;
+  for(let property in user){
+    if(user[property]==="" && (ConfPassword != Password)){
+      newErrors[property] = true
+      next = false
+    }
+   
   }
-  if (!passwordValidation.test(Password)){
-    return alert("Ingrese una contraseña válida");
+  setErrors(newErrors)
+  if(next){
+    sendUser();
   }
-  if (ConfPassword != Password) {
-    return alert("Verificar contraseña");
-  }
-  sendUser();
 };
 
 const sendUser = async () => {
   try {
     setLoading(true);
     const response = await axios.post(
-      "http://secret-garden-33326.herokuapp.com/register/",
-      { email: Email, password: Password, username: User }
+      "http://secret-garden-33326.herokuapp.com/register/", user
     );
     alert("Registro exitoso")
     console.log(response);
     setLoading(false);
   }catch (error){
     setLoading(false);
-    console.error(error);
+    console.error(error?.response?.data);
   }
 };
+  const changeUserFields = (name, text) => {
+    setUser({
+      ...user,
+      [name]: text,
+    });
+  };
+
   return (
     
     <View style={styles.container}>
@@ -65,23 +75,26 @@ const sendUser = async () => {
           <InputComponent 
             title={'Nombre de usuario'} 
             Icon={UserSVG} 
+            visibleAlert={errors.username}
             visibleText={true}
-            value={User}
-            setValue={setUser}  
+            value={user.username}
+            setValue={(text) => changeUserFields("username", text)}  
             />
           <InputComponent 
             title={'E-mail'} 
             Icon={EmailSVG} 
+            visibleAlert={errors.email}
             visibleText={true}
-            value={Email}
-            setValue={setEmail}  
+            value={user.email}
+            setValue={(text) => changeUserFields("email", text)}  
             />
           <InputComponent
             title={'Contraseña'}
             Icon={PasswordSVG}
+            visibleAlert={errors.password}
             visibleIcon={true}
-            value={Password}
-            setValue={setPassword}  
+            value={user.password}
+            setValue={(text) => changeUserFields("password", text)}  
           />
           <InputComponent
             title={'Repetir contraseña'}

@@ -5,13 +5,14 @@ import Screen1 from "./steps/screen1";
 import Screen2 from "./steps/screen2";
 import Screen3 from "./steps/screen3";
 import axios from "axios";
+import {AsyncStorage} from '@react-native-async-storage/async-storage';
 
 const initialState = {
-  nameAccount: "",
-  numberAccount: "",
-  balance: "",
-  date: "",
-  accountType: "",
+  name: "",
+  number: "",
+  current_balance: "",
+  court_date: "",
+  account_type: "",
   cve: "",
 };
 
@@ -22,29 +23,26 @@ export const FormularioContext = React.createContext({
 
 const paginas = [<Screen1 />, <Screen2 />, <Screen3 />];
 
-const registerAccount = async () => {
-  try {
-    const response = await axios.post(
-      "http://secret-garden-33326.herokuapp.com/account/register",
-      {
-        name: nameAccount,
-        number: numberAccount,
-        current_balance: balance,
-        court_date: date,
-        account_type: accountType,
-        cve: cve,
-      }
-    );
-    alert("Cuenta creada");
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 export default function Formulario() {
   const [posicion, setPosicion] = useState(0);
   const [formulario, setFormulario] = useState(initialState);
+
+  const registerAccount = async () => {
+    try {
+      const response = await axios.post({
+        url: "http://secret-garden-33326.herokuapp.com/account/register",
+        formulario,
+        headers: {"Authorization": 'Bearer' + AsyncStorage.getItem('userInfo')},
+      }
+        , formulario
+      );
+      alert("Cuenta creada");
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -60,7 +58,7 @@ export default function Formulario() {
           onPress={() => setPosicion(posicion - 1)}
         />
         {posicion === paginas.length - 1 ? (
-          <Button onPress={() => registerAccount(formulario)} title="Guardar" />
+          <Button onPress={registerAccount} title="Guardar" />
         ) : (
           <Button onPress={() => setPosicion(posicion + 1)} title="Siguiente" />
         )}

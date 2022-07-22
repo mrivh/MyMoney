@@ -13,7 +13,7 @@ const Screen1 = () => {
           onChangeText={(text) =>
             setFormulario({
               ...formulario,
-              nameAccount: text,
+              name: text,
             })
           }
         />
@@ -23,7 +23,7 @@ const Screen1 = () => {
           onChangeText={(text) =>
             setFormulario({
               ...formulario,
-              numberAccount: text,
+              number: text,
             })
           }
         />

@@ -13,7 +13,7 @@ const Screen2 = () => {
         onChangeText={(text) =>
           setFormulario({
             ...formulario,
-            balance: text,
+            current_balance: text,
           })
         }
       />
@@ -23,7 +23,7 @@ const Screen2 = () => {
         onChangeText={(text) =>
           setFormulario({
             ...formulario,
-            date: text,
+            court_date: text,
           })
         }
       />

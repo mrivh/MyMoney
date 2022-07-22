@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import ButtonForInit from '../../components/ButtonForInit';
 
 
@@ -7,14 +7,36 @@ export default function HomeScreen({navigation}) {
   return (
     <View style={styles.container}>
         <Text style={styles.title}>Bienvenido</Text>
-        <ButtonForInit 
-          text="REGISTRO DE CUENTAS"
-          onPress={() => navigation.navigate('registerAccountsScreen')}
-          />
-        <ButtonForInit 
-          text="LISTADO DE CUENTAS"
-          
-          />
+        <ScrollView>
+          <ButtonForInit 
+            text="CUENTAS"
+            onPress={() => navigation.navigate('Registro Cuentas')}
+            />
+          <ButtonForInit 
+            text="ETIQUETAS"
+            onPress={() => navigation.navigate('Registro Cuentas')}
+            />
+          <ButtonForInit 
+            text="INGRESOS"
+            onPress={() => navigation.navigate('Registro Cuentas')}
+            />
+          <ButtonForInit 
+            text="GASTOS"
+            onPress={() => navigation.navigate('Registro Cuentas')}
+            />
+          <ButtonForInit 
+            text="METAS"
+            onPress={() => navigation.navigate('Registro Cuentas')}
+            />
+          <ButtonForInit 
+            text="AHORRO"
+            onPress={() => navigation.navigate('Registro Cuentas')}
+            />
+          <ButtonForInit 
+            text="BALANCE"
+            onPress={() => navigation.navigate('Registro Cuentas')}
+            />
+        </ScrollView>
         
     </View>
   );
