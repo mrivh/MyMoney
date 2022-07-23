@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Image} from 'react-native';
 import LogoSVG from '../../../assets/icons/logo.svg';
 import Icons from '../../components/icons';
 import InputComponent from '../../components/InputComponent';
 import UserSVG from '../../../assets/icons/userIcon.svg'
-import EmailSVG from '../../../assets/icons/email.svg';
-import PasswordSVG from '../../../assets/icons/password.svg';
+import EmailSVG from '../../../assets/icons/email-register.svg';
+import PasswordSVG from '../../../assets/icons/password-register.svg';
 import ButtonForInit from '../../components/ButtonForInit';
 import BottomText from '../../components/BottomText';
 import { passwordValidation, userValidation } from "../../../utils/validations";
 import styles from './styles';
 import axios from "axios";
+
+const Logo = require('../../../assets/icons/LogoMyMoney.png');
 
 const initialState = {
   username: "",
@@ -28,7 +30,7 @@ const sendForm = () => {
   let next = true;
   let newErrors = errors;
   for(let property in user){
-    if(user[property]==="" && (ConfPassword != Password)){
+    if(user[property]===""){
       newErrors[property] = true
       next = false
     }
@@ -67,7 +69,7 @@ const sendUser = async () => {
       <ScrollView>
         <View style={styles.logoscontainer}>
           <View style={styles.logosdireccion}>
-            <Icons IconProp={LogoSVG} style={styles.logocontainer} />
+            <Image source={ Logo } style={styles.logocontainer} />
           </View>
         </View>
         <View style={styles.formcontainer}>

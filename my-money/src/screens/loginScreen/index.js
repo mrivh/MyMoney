@@ -12,6 +12,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from "./styles";
 import axios from "axios";
 
+const Logo = require('../../../assets/icons/LogoMyMoney.png');
+
 const initialState = {
   email: "",
   password: "",
@@ -19,6 +21,7 @@ const initialState = {
 
 export default function LoginScreen({ navigation }) {
   const [user, setUser] = useState(initialState);
+  const [Loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ email: false, password: false });
 
   const sendForm = () => {
@@ -42,24 +45,24 @@ export default function LoginScreen({ navigation }) {
   const sendUser = async () => {
     
     try {
+      setLoading(true);
       const response = await axios.post(
         "http://secret-garden-33326.herokuapp.com/logIn/",
         user
       );
       
       const tokens = response.data.tokens
-      const keyV = [...response]
-      JSON.parse(tokens)
-      console.log(keyV)
+      let re = /'/g;
+      const newToken = tokens.replace(re, '"')
+      const finalToken = JSON.parse(newToken)
 
-     
-      //AsyncStorage.setItem("userInfo", keyValue.access)
+      AsyncStorage.setItem("userInfo", finalToken.refresh)
     
       navigation.navigate("homeScreen");
       setLoading(false);
     } catch (error) {
       
-      console.error(error?.response?.data);
+      console.error(error);
       
     }
   };
@@ -74,7 +77,7 @@ export default function LoginScreen({ navigation }) {
     <View style={styles.container}>
       <View style={styles.logoscontainer}>
         <View style={styles.logosdireccion}>
-          <Icons IconProp={LogoSVG} style={styles.logocontainer} />
+          <Image source={ Logo } style={styles.logocontainer} />
         </View>
       </View>
       <View style={styles.formcontainer}>
@@ -94,8 +97,10 @@ export default function LoginScreen({ navigation }) {
           value={user.password}
           setValue={(text) => changeUserFields("password", text)}
         />
-        <BottomText text={"¿Contraseña Olvidada?"} />
-        <ButtonForInit text="INGRESAR" onPress={sendForm} />
+        <BottomText text={"¿Contraseña Olvidada?"} style={styles.text} />
+        <ButtonForInit 
+          text={Loading ? "Cargando...":"INGRESAR"}
+          onPress={sendForm} />
         <BottomText
           navigation={navigation}
           text={"¿Aún no tienes una cuenta?"}

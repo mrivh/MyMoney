@@ -56,7 +56,7 @@ export default function InputComponent({
           placeholderTextColor='#C4C4C4'
           placeholder={title}
           style={styles.input}
-          secureTextEntry={title === ('Contraseña' || 'Repetir contraseña') ?passVisible : false}
+          secureTextEntry={title === ('Contraseña') || title === ('Repetir contraseña') ?passVisible : false}
           value={value}
           onChangeText={changeText}
         />
@@ -72,9 +72,3 @@ export default function InputComponent({
     </View>
   );
 }
-
-/*if (!userValidation.test(User)){
-  return 'Nombre de usuario inválido';
-}else if(User === ""){
-  return 'Ingrese nombre de usuario';
-}*/
