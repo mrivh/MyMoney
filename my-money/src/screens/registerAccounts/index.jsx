@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import Screen1 from "./steps/screen1";
 import Screen2 from "./steps/screen2";
 import Screen3 from "./steps/screen3";
-import axios from "axios";
-import {AsyncStorage} from '@react-native-async-storage/async-storage';
+import { apiRequest } from "../../API";
 
 const initialState = {
   name: "",
@@ -30,13 +29,13 @@ export default function Formulario() {
 
   const registerAccount = async () => {
     try {
-      const response = await axios.post({
-        url: "http://secret-garden-33326.herokuapp.com/account/register",
-        formulario,
-        headers: {"Authorization": 'Bearer' + AsyncStorage.getItem('userInfo')},
-      }
-        , formulario
-      );
+      const response = await apiRequest({
+        method: "post",
+        url: "account/register",
+        data: formulario,
+        sendToken: true,
+      });
+
       alert("Cuenta creada");
       console.log(response);
     } catch (error) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text} from "react-native";
+import { View, Text } from "react-native";
 import LogoSVG from "../../../assets/icons/logo.svg";
 import Icons from "../../components/icons";
 import InputComponent from "../../components/InputComponent";
@@ -7,12 +7,12 @@ import EmailSVG from "../../../assets/icons/email.svg";
 import PasswordSVG from "../../../assets/icons/password.svg";
 import ButtonForInit from "../../components/ButtonForInit";
 import BottomText from "../../components/BottomText";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { apiRequest } from "../../API";
 import styles from "./styles";
-import axios from "axios";
 
-const Logo = require('../../../assets/icons/LogoMyMoney.png');
+
+const Logo = require("../../../assets/icons/LogoMyMoney.png");
 
 const initialState = {
   email: "",
@@ -28,42 +28,39 @@ export default function LoginScreen({ navigation }) {
     let next = true;
     let newErrors = errors;
     navigation.navigate("homeScreen");
-    for(let property in user){
-      if(user[property]===""){
-        newErrors[property] = true
-        next = false
+    for (let property in user) {
+      if (user[property] === "") {
+        newErrors[property] = true;
+        next = false;
       }
-    
     }
-    setErrors(newErrors)
-    if(next){
+    setErrors(newErrors);
+    if (next) {
       sendUser();
     }
-   
   };
 
   const sendUser = async () => {
-    
     try {
       setLoading(true);
-      const response = await axios.post(
-        "http://secret-garden-33326.herokuapp.com/logIn/",
-        user
-      );
-      
-      const tokens = response.data.tokens
-      let re = /'/g;
-      const newToken = tokens.replace(re, '"')
-      const finalToken = JSON.parse(newToken)
+      const response = await apiRequest({
+        method: "post",
+        url: "logIn/",
+        data: user,
+        sendToken: false,
+      });
 
-      AsyncStorage.setItem("userInfo", finalToken.refresh)
-    
+      const tokens = response.data.tokens;
+      let re = /'/g;
+      const newToken = tokens.replace(re, '"');
+      const finalToken = JSON.parse(newToken);
+
+      AsyncStorage.setItem("userInfo", finalToken.access);
+
       navigation.navigate("homeScreen");
       setLoading(false);
     } catch (error) {
-      
       console.error(error);
-      
     }
   };
   const changeUserFields = (name, text) => {
@@ -77,7 +74,7 @@ export default function LoginScreen({ navigation }) {
     <View style={styles.container}>
       <View style={styles.logoscontainer}>
         <View style={styles.logosdireccion}>
-          <Image source={ Logo } style={styles.logocontainer} />
+          <Image source={Logo} style={styles.logocontainer} />
         </View>
       </View>
       <View style={styles.formcontainer}>
@@ -98,9 +95,10 @@ export default function LoginScreen({ navigation }) {
           setValue={(text) => changeUserFields("password", text)}
         />
         <BottomText text={"¿Contraseña Olvidada?"} style={styles.text} />
-        <ButtonForInit 
-          text={Loading ? "Cargando...":"INGRESAR"}
-          onPress={sendForm} />
+        <ButtonForInit
+          text={Loading ? "Cargando..." : "INGRESAR"}
+          onPress={sendForm}
+        />
         <BottomText
           navigation={navigation}
           text={"¿Aún no tienes una cuenta?"}
