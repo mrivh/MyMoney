@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import LogoSVG from "../../../assets/icons/logo.svg";
 import Icons from "../../components/icons";
 import InputComponent from "../../components/InputComponent";

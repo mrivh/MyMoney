@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Image } from "react-native";
 import LogoSVG from "../../../assets/icons/logo.svg";
 import Icons from "../../components/icons";
 import InputComponent from "../../components/InputComponent";
-import UserSVG from "../../../assets/icons/userIcon.svg";
+import UserSVG from "../../../assets/icons/user.svg";
 import EmailSVG from "../../../assets/icons/email-register.svg";
 import PasswordSVG from "../../../assets/icons/password-register.svg";
 import ButtonForInit from "../../components/ButtonForInit";
