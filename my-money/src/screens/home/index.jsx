@@ -18,7 +18,7 @@ export default function HomeScreen({navigation}) {
             />
           <ButtonForInit 
             text="INGRESOS"
-            onPress={() => navigation.navigate('Registro Cuentas')}
+            onPress={() => navigation.navigate('Registro Ingresos')}
             />
           <ButtonForInit 
             text="GASTOS"

@@ -22,7 +22,6 @@ export const FormularioContext = React.createContext({
 
 const paginas = [<Screen1 />, <Screen2 />, <Screen3 />];
 
-
 export default function Formulario() {
   const [posicion, setPosicion] = useState(0);
   const [formulario, setFormulario] = useState(initialState);
