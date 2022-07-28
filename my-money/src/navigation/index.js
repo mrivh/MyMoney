@@ -8,6 +8,8 @@ import RegisterScreen from '../screens/registerScreen';
 import HomeScreen from '../screens/home'
 import RegisterAccountsScreen from '../screens/registerAccounts'
 import ListAccountsScreen from '../screens/listAccounts'
+import RegisterTagsScreen from '../screens/registerTagsScreen'
+import ListTagsScreen from '../screens/listTagsScreen'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -22,9 +24,34 @@ function Logo() {
 
 function RegisterAccountsTab() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#00296A'
+        },
+        headerTitleAlign: 'center',
+        headerTintColor: '#FFFFFF',
+      }}
+    >
       <Tab.Screen name="Registro Cuentas" component={RegisterAccountsScreen} />
       <Tab.Screen name="Lista Cuentas" component={ListAccountsScreen} />
+    </Tab.Navigator>
+  );
+}
+
+function RegisterTagsTab() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#00296A'
+        },
+        headerTitleAlign: 'center',
+        headerTintColor: '#FFFFFF',
+      }}
+    >
+      <Tab.Screen name="Registro Etiquetas" component={RegisterTagsScreen} />
+      <Tab.Screen name="Lista Etiquetas" component={ListTagsScreen} />
     </Tab.Navigator>
   );
 }
@@ -44,11 +71,15 @@ export default function Navigation() {
         <Stack.Screen 
         name="homeScreen" 
         component={HomeScreen} 
-        options={{ headerTitle: (props) => <Logo {...props}/>}} />
+        options={{ headerTitle: (props) => <Logo {...props}/>, headerTitleAlign: 'center'}} />
         <Stack.Screen 
         name="Registro Cuentas" 
         component={RegisterAccountsTab} 
-        options={{ headerTitle: (props) => <Logo {...props}/>}} />
+        options={{ headerTitle: (props) => <Logo {...props}/>, headerTitleAlign: 'center'}} />
+        <Stack.Screen 
+        name="Registro Etiquetas" 
+        component={RegisterTagsTab} 
+        options={{ headerTitle: (props) => <Logo {...props}/>, headerTitleAlign: 'center'}} />
        
       </Stack.Navigator>
     </NavigationContainer>
