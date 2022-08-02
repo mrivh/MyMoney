@@ -7,17 +7,7 @@ const Screen3 = () => {
   const { formulario, setFormulario } = useContext(FormularioContext);
   return (
     <View style={styles.sonContainer}>
-      <Text>Tipo de cuenta :</Text>
-      <TextInput
-        value={formulario.income_type}
-        onChangeText={(text) =>
-          setFormulario({
-            ...formulario,
-            income_type: text,
-          })
-        }
-      />
-      <Text>Cuenta :</Text>
+      <Text>Cuenta:</Text>
       <TextInput
         value={formulario.account}
         onChangeText={(text) =>

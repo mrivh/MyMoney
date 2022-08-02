@@ -3,27 +3,27 @@ import React, { useContext } from "react";
 import { TextInput } from "react-native";
 import { FormularioContext } from "..";
 
-const Screen3 = () => {
+const Screen1 = () => {
   const { formulario, setFormulario } = useContext(FormularioContext);
   return (
     <View style={styles.sonContainer}>
-      <Text>Tipo de cuenta :</Text>
+      <Text>Concepto:</Text>
       <TextInput
-        value={formulario.income_type}
+        value={formulario.label}
         onChangeText={(text) =>
           setFormulario({
             ...formulario,
-            income_type: text,
+            label: text,
           })
         }
       />
-      <Text>Cuenta :</Text>
+      <Text>Fecha de gasto:</Text>
       <TextInput
-        value={formulario.account}
+        value={formulario.spending_day}
         onChangeText={(text) =>
           setFormulario({
             ...formulario,
-            account: text,
+            spending_day: text,
           })
         }
       />
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Screen3;
+export default Screen1;

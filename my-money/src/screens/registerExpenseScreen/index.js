@@ -7,11 +7,10 @@ import Screen3 from "./steps/screen3";
 import { apiRequest } from "../../API";
 
 const initialState = {
-  label: "",
-  income_date: "",
-  import_income: "",
   description: "",
-  income_type: "",
+  spending_day: "",
+  amount: "",
+  label: "",
   account: "",
 };
 
@@ -26,16 +25,16 @@ export default function Formulario() {
   const [posicion, setPosicion] = useState(0);
   const [formulario, setFormulario] = useState(initialState);
 
-  const registerIncome = async () => {
+  const registerExpense = async () => {
     try {
       const response = await apiRequest({
         method: "post",
-        url: "income/register",
+        url: "expense/",
         data: formulario,
         sendToken: true,
       });
 
-      alert("Ingreso creado");
+      alert("Cuenta creada");
       console.log(response);
     } catch (error) {
       console.error(error);
@@ -56,7 +55,7 @@ export default function Formulario() {
           onPress={() => setPosicion(posicion - 1)}
         />
         {posicion === paginas.length - 1 ? (
-          <Button onPress={registerIncome} title="Guardar" />
+          <Button onPress={registerExpense} title="Guardar" />
         ) : (
           <Button onPress={() => setPosicion(posicion + 1)} title="Siguiente" />
         )}

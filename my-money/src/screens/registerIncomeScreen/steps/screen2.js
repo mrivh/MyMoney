@@ -9,11 +9,11 @@ const Screen2 = () => {
     <View style={styles.sonContainer}>
       <Text>Importe:</Text>
       <TextInput
-        value={formulario.amount}
+        value={formulario.import_income}
         onChangeText={(text) =>
           setFormulario({
             ...formulario,
-            amount: text,
+            import_income: text,
           })
         }
       />

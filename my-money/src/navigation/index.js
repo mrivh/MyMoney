@@ -12,6 +12,8 @@ import RegisterTagsScreen from "../screens/registerTagsScreen";
 import ListTagsScreen from "../screens/listTagsScreen";
 import RegisterIncomeScreen from "../screens/registerIncomeScreen";
 import ListIncomeScreen from "../screens/listIncomeScreen";
+import RegisterExpenseScreen from "../screens/registerExpenseScreen";
+import ListExpenseScreen from "../screens/listExpenseScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -71,6 +73,23 @@ function RegisterIncomeTab() {
   );
 }
 
+function RegisterExpenseTab() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#00296A",
+        },
+        headerTitleAlign: "center",
+        headerTintColor: "#FFFFFF",
+      }}
+    >
+      <Tab.Screen name="Registro Gastos" component={RegisterExpenseScreen} />
+      <Tab.Screen name="Lista Gastos" component={ListExpenseScreen} />
+    </Tab.Navigator>
+  );
+}
+
 export default function Navigation() {
   return (
     <NavigationContainer>
@@ -112,6 +131,14 @@ export default function Navigation() {
         <Stack.Screen
           name="Registro Ingresos"
           component={RegisterIncomeTab}
+          options={{
+            headerTitle: (props) => <Logo {...props} />,
+            headerTitleAlign: "center",
+          }}
+        />
+        <Stack.Screen
+          name="Registro Gastos"
+          component={RegisterExpenseTab}
           options={{
             headerTitle: (props) => <Logo {...props} />,
             headerTitleAlign: "center",

@@ -12,11 +12,11 @@ export default function ListIncomeScreen({ navigation }) {
 
   useEffect(() => {
     if (isFocused) {
-      listAccount();
+      listIncome();
     }
   }, [isFocused]);
 
-  const listAccount = async () => {
+  const listIncome = async () => {
     try {
       const { data } = await apiRequest({
         method: "get",
