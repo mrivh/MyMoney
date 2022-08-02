@@ -30,7 +30,7 @@ export default function HomeScreen({navigation}) {
             />
           <ButtonForInit 
             text="AHORRO"
-            onPress={() => navigation.navigate('Registro Cuentas')}
+            onPress={() => navigation.navigate('Registro Ahorros')}
             />
           <ButtonForInit 
             text="BALANCE"

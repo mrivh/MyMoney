@@ -34,7 +34,7 @@ export default function Formulario() {
         sendToken: true,
       });
 
-      alert("Cuenta creada");
+      alert("Gasto creado");
       console.log(response);
     } catch (error) {
       console.error(error);

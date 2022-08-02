@@ -31,11 +31,11 @@ export default function ListIncomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        {lista.map((income, idx) => {
+        {lista.map((expense, idx) => {
           return (
             <View key={idx} style={styles.formcontainer}>
-              <BottomText text={income.label} />
-              <BottomText text={income.description} />
+              <BottomText text={expense.label} />
+              <BottomText text={expense.description} />
               <BottomText text={"CVE: 564"} />
             </View>
           );
