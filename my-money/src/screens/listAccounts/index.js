@@ -35,8 +35,10 @@ export default function ListAccountsScreen({ navigation }) {
           return (
             <View key={idx} style={styles.formcontainer}>
               <BottomText text={account.name} />
+              <BottomText text={account.account_type} />
+              <BottomText text={account.current_balance} />
               <BottomText text={account.number} />
-              <BottomText text={"CVE: 564"} />
+              <BottomText text={account.court_date} />
             </View>
           );
         })}

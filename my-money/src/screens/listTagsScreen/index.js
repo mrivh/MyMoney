@@ -35,8 +35,9 @@ export default function ListTagsScreen({ navigation }) {
           return (
             <View key={idx} style={styles.formcontainer}>
               <BottomText text={tag.description} />
+              <BottomText text={tag.type} />
+              <BottomText text={tag.classification} />
               <BottomText text={tag.color} />
-              <BottomText text={"CVE: 564"} />
             </View>
           );
         })}
