@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, ImageBackground } from "react-native";
 import styles from "./styles";
 
-export default function CardHome({
+export default function CardAccount({
   description,
   amount,
   type,

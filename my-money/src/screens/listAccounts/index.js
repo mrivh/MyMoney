@@ -37,7 +37,7 @@ export default function ListAccountsScreen({ navigation }) {
             <CardAccount 
               key={idx}
               description={account.name}
-              amount={account.current_balance}
+              amount={"$ " + account.current_balance}
               type={account.account_type}
               numberCard={account.number}
               dateCard={account.court_date}
