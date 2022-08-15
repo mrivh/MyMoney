@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, ImageBackground } from "react-native";
 import styles from "./styles";
 import BottomText from "../../components/BottomText";
 import { apiRequest } from "../../API";
 import { useIsFocused } from "@react-navigation/native";
+import CardAccount from "../../components/CardAccount"
 
 export default function ListAccountsScreen({ navigation }) {
   const [lista, setLista] = useState([]);
@@ -33,13 +34,14 @@ export default function ListAccountsScreen({ navigation }) {
       <ScrollView>
         {lista.map((account, idx) => {
           return (
-            <View key={idx} style={styles.formcontainer}>
-              <BottomText text={account.name} />
-              <BottomText text={account.account_type} />
-              <BottomText text={account.current_balance} />
-              <BottomText text={account.number} />
-              <BottomText text={account.court_date} />
-            </View>
+            <CardAccount 
+              key={idx}
+              description={account.name}
+              amount={account.current_balance}
+              type={account.account_type}
+              numberCard={account.number}
+              dateCard={account.court_date}
+            />
           );
         })}
       </ScrollView>

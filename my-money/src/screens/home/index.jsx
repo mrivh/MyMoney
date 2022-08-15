@@ -1,52 +1,64 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import ButtonForInit from '../../components/ButtonForInit';
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import ButtonForInit from "../../components/ButtonForInit";
+import CardHome from "../../components/CardHome";
+import AccountSVG from "../../../assets/icons/account.svg";
+import IncomeSVG from "../../../assets/icons/income.svg";
+import ExpenseSVG from "../../../assets/icons/expense.svg";
+import SavingSVG from "../../../assets/icons/saving.svg";
+import GoalSVG from "../../../assets/icons/goal.svg";
+import BalanceSVG from "../../../assets/icons/balance.svg";
 
-
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-        <Text style={styles.title}>Bienvenido</Text>
-        <ScrollView>
-          <ButtonForInit 
-            text="CUENTAS"
-            onPress={() => navigation.navigate('Registro Cuentas')}
-            />
-          <ButtonForInit 
-            text="ETIQUETAS"
-            onPress={() => navigation.navigate('Registro Etiquetas')}
-            />
-          <ButtonForInit 
-            text="INGRESOS"
-            onPress={() => navigation.navigate('Registro Ingresos')}
-            />
-          <ButtonForInit 
-            text="GASTOS"
-            onPress={() => navigation.navigate('Registro Gastos')}
-            />
-          <ButtonForInit 
-            text="METAS"
-            onPress={() => navigation.navigate('Registro Cuentas')}
-            />
-          <ButtonForInit 
-            text="AHORRO"
-            onPress={() => navigation.navigate('Registro Ahorros')}
-            />
-          <ButtonForInit 
-            text="BALANCE"
-            onPress={() => navigation.navigate('Registro Cuentas')}
-            />
-        </ScrollView>
-        
+      <Text style={styles.title}>Bienvenido</Text>
+      <ScrollView>
+        <CardHome
+          text="Cuentas"
+          onPress={() => navigation.navigate("Registro Cuentas")}
+          Icon={AccountSVG}
+        />
+        <CardHome
+          text="Etiquetas"
+          onPress={() => navigation.navigate("Registro Etiquetas")}
+          Icon={AccountSVG}
+        />
+        <CardHome
+          text="Ingresos"
+          onPress={() => navigation.navigate("Registro Ingresos")}
+          Icon={IncomeSVG}
+        />
+        <CardHome
+          text="Gastos"
+          onPress={() => navigation.navigate("Registro Gastos")}
+          Icon={ExpenseSVG}
+        />
+        <CardHome
+          text="Ahorro"
+          onPress={() => navigation.navigate("Registro Ahorros")}
+          Icon={SavingSVG}
+        />
+        <CardHome
+          text="Metas"
+          onPress={() => navigation.navigate("Registro Cuentas")}
+          Icon={GoalSVG}
+        />
+        <CardHome
+          text="Balance"
+          onPress={() => navigation.navigate("Registro Cuentas")}
+          Icon={BalanceSVG}
+        />
+      </ScrollView>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     justifyContent: "space-evenly",
     padding: 40,
     paddingVertical: 50,
@@ -54,21 +66,16 @@ const styles = StyleSheet.create({
 
   logoContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingVertical: 20,
-  },
-
-  logo: {
-    width: 150,
-    height: 150,
   },
 
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#2E86C1',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#2E86C1",
+    textAlign: "center",
     marginBottom: 40,
     paddingVertical: 50,
   },
