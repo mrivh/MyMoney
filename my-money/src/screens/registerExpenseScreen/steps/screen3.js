@@ -24,6 +24,8 @@ const Screen3 = () => {
 const styles = StyleSheet.create({
   sonContainer: {
     flex: 1,
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 });
 

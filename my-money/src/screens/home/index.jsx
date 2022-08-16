@@ -41,16 +41,6 @@ export default function HomeScreen({ navigation }) {
             onPress={() => navigation.navigate("Registro Ahorros")}
             Icon={SavingSVG}
           />
-          <CardHome
-            text="Metas"
-            onPress={() => navigation.navigate("Registro Cuentas")}
-            Icon={GoalSVG}
-          />
-          <CardHome
-            text="Balance"
-            onPress={() => navigation.navigate("Registro Cuentas")}
-            Icon={BalanceSVG}
-          />
         </View>
       </ScrollView>
     </View>
@@ -65,7 +55,7 @@ const styles = StyleSheet.create({
     width: "100%",
     maxHeight: 400,
     flexWrap: "wrap",
-    marginTop: 100,
+    marginTop: 120,
 
     alignContent: "space-around",
   },
