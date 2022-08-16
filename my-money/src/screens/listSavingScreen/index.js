@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import styles from "./styles";
-import BottomText from "../../components/BottomText";
+import CardSaving from "../../components/CardSaving";
 import { apiRequest } from "../../API";
 import { useIsFocused } from "@react-navigation/native";
 
@@ -33,11 +33,13 @@ export default function ListIncomeScreen({ navigation }) {
       <ScrollView>
         {lista.map((saving, idx) => {
           return (
-            <View key={idx} style={styles.formcontainer}>
-              <BottomText text={saving.saving_date} />
-              <BottomText text={saving.saving_amount} />
-              <BottomText text={"CVE: 564"} />
-            </View>
+            <CardSaving
+              key={idx}
+              list={saving.saving_list}
+              concept={saving.saving_concept}
+              amount={"$ " + saving.saving_amount}
+              dateSaving={saving.saving_date}
+            />
           );
         })}
       </ScrollView>

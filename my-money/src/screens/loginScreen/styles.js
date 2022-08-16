@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   container: {width: '100%', height: '100%', backgroundColor: '#FFFFFF'},
   formcontainer: {
     width: '100%',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#00296A',
     height: Dimensions.get('screen').height,
     marginTop: 100,
     borderTopRightRadius: 30,

@@ -8,10 +8,9 @@ export default function CardAccount({
   type,
   numberCard,
   dateCard,
-  key = null,
 }) {
   return (
-    <View key={key} style={styles.card}>
+    <View style={styles.card}>
       <ImageBackground
         source={require("../../../assets/icons/card_bg.png")}
         style={styles.image}

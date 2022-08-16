@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView } from "react-native";
 import styles from "./styles";
-import BottomText from "../../components/BottomText";
+import CardTag from "../../components/CardTag";
 import { apiRequest } from "../../API";
 import { useIsFocused } from "@react-navigation/native";
 
@@ -33,12 +33,13 @@ export default function ListTagsScreen({ navigation }) {
       <ScrollView>
         {lista.map((tag, idx) => {
           return (
-            <View key={idx} style={styles.formcontainer}>
-              <BottomText text={tag.description} />
-              <BottomText text={tag.type} />
-              <BottomText text={tag.classification} />
-              <BottomText text={tag.color} />
-            </View>
+            <CardTag
+              key={idx}
+              description={tag.description}
+              type={tag.type}
+              classification={tag.classification}
+              colorCircle={tag.color}
+            />
           );
         })}
       </ScrollView>
