@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 42,
-    marginTop: 15,
+    marginTop: 50,
   },
   text: {
     color: '#00296A',

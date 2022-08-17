@@ -111,7 +111,6 @@ export default function RegisterScreen({ navigation }) {
             value={ConfPassword}
             setValue={setConfPassword}
           />
-          <BottomText text={"¿Contraseña Olvidada?"} onPress={sendForm} />
           <ButtonForInit
             text={Loading ? "Cargando..." : "REGISTRAR"}
             onPress={sendForm}

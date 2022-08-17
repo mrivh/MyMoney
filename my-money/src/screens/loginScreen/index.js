@@ -94,7 +94,6 @@ export default function LoginScreen({ navigation }) {
           value={user.password}
           setValue={(text) => changeUserFields("password", text)}
         />
-        <BottomText text={"¿Contraseña Olvidada?"} style={styles.text} />
         <ButtonForInit
           text={Loading ? "Cargando..." : "INGRESAR"}
           onPress={sendForm}

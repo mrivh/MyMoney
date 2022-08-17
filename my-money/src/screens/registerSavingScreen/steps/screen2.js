@@ -17,7 +17,7 @@ const Screen2 = () => {
           })
         }
       />
-      <Text>Fecha de corte:</Text>
+      <Text>Concepto:</Text>
       <TextInput
         value={formulario.saving_concept}
         onChangeText={(text) =>
